@@ -6,6 +6,7 @@ TagManager:
   tags:
   - itembox
   - obstacle
+  - jump
   layers:
   - Default
   - TransparentFX
