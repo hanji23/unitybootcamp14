@@ -110,3 +110,12 @@ unitybootcamp14 project
         GetComponent<Rigidbody>().AddForce(pos * 5);//프레임마다 호출
     }
 ```
+
+## 유니티 클래스_벡터
+
+### **[값(value), 참조(reference)]**
+>값 : 변수에 데이터가 직접 저장 됩니다. ex) int a = 5;
+>
+>참조 : 변수에 데이터가 저장된 메모리 주소값이 저장되는 경우
+>
+>>ex) Vectorsample = new Vectorsample(); 클래스는 대표적인 참조 타입
