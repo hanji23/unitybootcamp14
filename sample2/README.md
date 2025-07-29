@@ -171,3 +171,90 @@ unitybootcamp14 project
 >>매우 빠른 속도로 접근이 가능합니다.(할당과 해제의 비용이 사실상 없음)
 >>
 >>데이터가 먼저 들어온 데이터가 누적되고 가장 마지막에 남은 데이터가 먼저 제거되는 방식(LIFO)
+
+```cs
+    //c# 에서 new 키워드는 힙에 대한 할당이 아니라 값에 대한 초기화를 의미합니다
+    //struct에서의 new -> 초기화
+    //class에서의 new -> 힙에 인스턴스 생성
+```
+### **[벡터의 특징]**
+>1. 값 타입(value)으로 참조가 아닌 값 그 자체를 의미 (구조체 struct) -> 계산이 빠르게 처리됨
+>
+>2. 값을 복사할 경우 값 그 자체를 복사하시만 하면 됨
+>
+>3. 벡터에 대한 계산 보조기능이 많이 제공됨(magnitude, normalized, Dot, Cross...)
+>
+>4. 벡터는 스택(stack) 영역의 메모리에서 저장됨
+
+### **[벡터의 요소]**
+>x : x축의 값
+>
+>y : y축의 값
+>
+>z : z축의 값
+>
+>w : 셰이더나 수학계산등에서 사용되는 Vector4에서의 w축
+```cs
+    public Vector3 A = new Vector3(); // xyz가 자동적으로 0(zero 벡터)
+    public Vector3 B = new Vector3(3, 4); //x와 y에 대한 정보 전달, z는 자동적으로 0
+    public Vector3 C = new Vector3(5, 6, 7);
+
+    public Vector2 D = new Vector2(8, 9);
+```
+### **[벡터의 Distance]**
+```cs
+        //현재 큐브의 위치를 벡터로 설정
+        Vector3 posA = A_cube.position;
+        Vector3 posB = B_cube.position;
+
+        //두 벡터의 차 -> 방향 벡터
+        Vector3 BtoA = posB - posA;
+        Vector3 AtoB = posA - posB;
+
+        //거리 측정
+        //Distance의 수학적 로직
+        // a = (ax, ay, az), b = (bx, by, bz) 라고 할때
+        // 두 벡터 사이의 거리는 각 축에 대한 차의 제곱의 합에 대한 루트 값
+        // -> √{(bx - ax)^2 + (by - ay)^2 + (bz - az)^2}
+
+        // 유니티의 Mathf 클래스를 기반으로 바꾸면?
+        Vector3 dif = posB - posA;
+        float distance = Mathf.Sqrt(dif.x * dif.x + dif.y * dif.y + dif.z * dif.z);
+        Debug.Log("Mathf : " + distance);
+
+        // 벡터 Distance 이용
+        distance = Vector3.Distance(posA, posB);
+        Debug.Log("Distance" + distance);
+```
+### **[벡터의 Lerp, Slerp]**
+>Lerp
+>
+>>Vector3.Lerp(start, end, t);
+>>
+>>start -> end 까지 t에 따라 선형 보간 합니다. -> 해당 방향으로 일정 간격 천천히 이동하는 코드
+>>
+>>t의 범위는 (0 ~ 1)이고 float
+```cs
+    public Transform target;
+    public float speed = 1.0f;
+
+    private Vector3 start_position;
+    private float t = 0f;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        start_position = transform.position;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (t < 1.0f)
+        {
+            t += Time.deltaTime * speed;
+            transform.position = Vector3.Lerp(start_position, target.position, t);
+        }
+    }
+```
+
