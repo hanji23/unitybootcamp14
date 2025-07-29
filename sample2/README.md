@@ -202,6 +202,7 @@ unitybootcamp14 project
     public Vector2 D = new Vector2(8, 9);
 ```
 ### **[벡터의 Distance]**
+>두 좌표 사이에 거리측정
 ```cs
         //현재 큐브의 위치를 벡터로 설정
         Vector3 posA = A_cube.position;
@@ -215,7 +216,7 @@ unitybootcamp14 project
         //Distance의 수학적 로직
         // a = (ax, ay, az), b = (bx, by, bz) 라고 할때
         // 두 벡터 사이의 거리는 각 축에 대한 차의 제곱의 합에 대한 루트 값
-        // -> √{(bx - ax)^2 + (by - ay)^2 + (bz - az)^2}
+        // -> √{(bx - ax)² + (by - ay)² + (bz - az)²}
 
         // 유니티의 Mathf 클래스를 기반으로 바꾸면?
         Vector3 dif = posB - posA;
@@ -258,3 +259,47 @@ unitybootcamp14 project
     }
 ```
 
+>Slerp
+>
+>>Vector3.Slerp(start, end, t);
+>>
+>>start -> end 까지 t에 따라 구면 선형 보간 합니다.
+>>
+>>t의 범위는 (0 ~ 1)이고 float
+```cs
+public Transform target;
+    public float speed = 1.0f;
+
+    private Vector3 start_position;
+    private float t = 0f;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        start_position = transform.position;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (t < 1.0f)
+        {
+            t += Time.deltaTime * speed;
+            transform.position = Vector3.Slerp(start_position, target.position, t);
+        }
+    }
+```
+
+### **[Leap 와 Glerp가 사용되는 경우]**
+>1. 단순한 위치 이동 -> Leap
+>
+>2. 회전 및 방향 전환 -> Sleap (Vector3.Sleap, Quaternion.Slerp)
+>
+>3. 자연스러운 카메라의 움직임 -> Sleap
+```cs
+    //요약 
+    // Leap : 직선이동
+    //        체력 게이지 등이 일정하게 변화하는 경우
+    //Sleap : 회전이나 각도의 개념이 필요한 경우
+    //        3D 회전(쿼터니언) / 벡터 간의 곡선 경로 확인 / 방향 회전이 부드럽게 대상 방향을 바라봐야 할 경우
+```
