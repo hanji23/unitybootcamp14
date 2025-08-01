@@ -30,7 +30,9 @@ public class PlayerMovement : MonoBehaviour
         //이동속도 설정
         Vector3 velocity = dir * speed /* Time.deltaTime*/;
 
-        rb.linearVelocity = velocity;
+        rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
+
+        //rb.linearVelocity = velocity;
         //리지드 바디이 속성
         //linearVelocity = 선형 속도(물체가 공간 상에서 이동하는 속도)
         //angularVelocity = 각 속도(물체가 회전하는 속도)
