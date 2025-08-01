@@ -4,8 +4,8 @@ unitybootcamp14 project 250731
 ## Attribute
 
 ## Input
-### InputSystem
-### Legacy
+ InputSystem
+ Legacy
 
 ## struct 와 class 
 
