@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStat : MonoBehaviour
 {
     [Header("Player")]
-    public string name = "캐릭터 이름";
+    public string pname = "캐릭터 이름";
     [Tooltip("캐릭터 직업")]
     public job myjob;
     //public string playerclass = "캐릭터 직업";

@@ -35,7 +35,7 @@ public class InspectorAttribute : MonoBehaviour
 
     //유니티에서 비공개(private) 필드를 인스펙터에 노출시키고 유니티의 직렬화 시스템에 포함시킵니다
     [SerializeField]
-    private int value2 = 7;
+    private int value2;
 
     //사용목적
     //public -> 노출되고 접근가능

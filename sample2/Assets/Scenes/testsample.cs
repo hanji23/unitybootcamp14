@@ -37,7 +37,7 @@ public class testsample : MonoBehaviour
             if (trycount < 10)
             {
                 int i = Random.Range(1, 11);
-
+                Debug.Log($" 1~10 -> {i},  {result}");
                 if (i <= result)
                 {
                     text5.text = $"실패!";
@@ -49,6 +49,8 @@ public class testsample : MonoBehaviour
                     tryitem--;
                     text5.text = $"성공!";
                 }
+
+                Debug.Log($"{text5.text}");
 
                 trycount++;
 
