@@ -9,6 +9,7 @@ unitybootcamp14 project
 
 ex)정적 메소드 : static 키워드로 구성된 해당 메소드는 클래스명, 메소드명()으로 사용이 가능합니다. Mathf.Abs(-5);
 
+```cs
 //기본적으로 사용되는 메소드
     float abs = -5;
     float ceil = 4.1f;
@@ -37,8 +38,10 @@ ex)정적 메소드 : static 키워드로 구성된 해당 메소드는 클래�
         Mathf.Pow(pow, 0.5f)    //Mathf.Sqrt()로 계산하는것보다 연산이 매우 느림
         Mathf.Pow(pow, -2)      //2의 -2제곱 -> 1/4 지수가 음수일 경우 값은 역수 형태로 계산  
         Mathf.Sqrt(sqrt)        //값을 전달 받아 해당 값의 제곱근을 계산
+```
 
 ### Mathf 클래스에서 제공해주는 상수값
+```cs
         Mathf.PI                //원주율 3.14159...
         Mathf.Infinity         //무한대
         //수학적 연산에 의해서 표현할수 있는 최대의 수를 넘는 경우라면 자동으로 처리되는값
@@ -110,6 +113,7 @@ ex)정적 메소드 : static 키워드로 구성된 해당 메소드는 클래�
         //      -> 미세한 값을 다룰 대 사용하는 값
         //         float에서 0f보다 Epsilon으로 0을 체크하면 안전하게 계산됩니다.
         //         0으로 나누는 상황을 방지합니다.
+```
 
 ## 삼각함수
 
@@ -120,6 +124,7 @@ ex)정적 메소드 : static 키워드로 구성된 해당 메소드는 클래�
 ## 카메라 레이케스트 처리
 
 ## 유니티의 회전(Rotate)
+```cs
 1. 오일러 각(Euler Angle)에 의한 회전 - x, y, z ghlwjs rkqt
  유니티 인스펙터에서의 transform 컴포넌트의 Rotate에 표기된 값(각도 기준)
  ex)Rotate X 120 Y 45 Z 0 ->x축으로 120도 y축으로 45도 회전 되었음을 의미
@@ -143,7 +148,8 @@ orientation : 방향
 
 단점 : 180도 이상의 표현 불가
       직관적으로 바로 이해하기 어려운 구조
-
+```
+```cs
 //오브젝트에 대한 회전 기능
          transform.Rotate()는 회전을 진행시키는 가장 기본적인 코드
          transform.Rotate(Vector3 eulerAngles);                       지정한 축을 기준으로 회전
@@ -169,8 +175,10 @@ orientation : 방향
         
         AroundRotate
         transform.RotateAround(pivot.position, Vector3.up, speed * Time.deltaTime);
+```
 
 쿼터니언 정리
+```cs
 Quaternion.identity = 회전없음
 Quaternion.Euler(x, y, z) = 오일러각 -> 쿼터니언 변환
 Quaternion.AngleAxis(angle, axis) 특정 축 기준의 회전
@@ -194,3 +202,4 @@ transform.LookAt() vs Quaternion.LookRotation()
 
 2. LookRotation(direction) 의 경우는 회전 값만 계산하고 적접적인 적용은 하지 않습니다. 
  -> 게산은 끝났으니 추가적인 작업으로 계산을 처리하면 되지 않을까?
+```
