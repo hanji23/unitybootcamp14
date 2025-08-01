@@ -10,23 +10,14 @@ unitybootcamp14 project
 ex)정적 메소드 : static 키워드로 구성된 해당 메소드는 클래스명, 메소드명()으로 사용이 가능합니다. Mathf.Abs(-5);
 
 //기본적으로 사용되는 메소드
-
     float abs = -5;
-    
     float ceil = 4.1f;
-    
     float floor = 4.6f;
-    
     float round = 4.5f;
-    
     float clamp;
-    
     float clamp01;
-    
     float pow = 2;
-    
     float sqrt = 4;
-    
     
         Mathf.Abs(abs)      //절댓값(absolute number)
         Mathf.Ceil(ceil)    //올림(소숫점과 상관없이 올림처리)
