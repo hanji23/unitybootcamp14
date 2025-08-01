@@ -7,3 +7,9 @@ unitybootcamp14 project 250731
 ### InputSystem
 
 ### Legacy
+
+## struct 와 class 
+
+## 직렬화
+
+## 배열 과 리스트 
