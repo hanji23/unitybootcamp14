@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class Buller_4_2 : MonoBehaviour
 {
     public float speed = 2.0f; // √—æÀ ¿Ãµø º”µµ
+    float speeduptime = 2;
     public float life_time = 5.0f; //√—æÀ π›≥≥Ω√∞£
     public GameObject effect_prefab; // ¿Ã∆Â∆Æ «¡∏Æ∆È
     public GameObject effect_prefab2; // ¿Ã∆Â∆Æ «¡∏Æ∆È
+    public GameObject effect_prefab3; // ¿Ã∆Â∆Æ «¡∏Æ∆È
 
     public Text text;
 
@@ -20,11 +22,13 @@ public class Buller_4_2 : MonoBehaviour
     {
         this.pool = pool;
         text = GameObject.Find("Canvas").GetComponentInChildren<Text>();
+        Instantiate(effect_prefab3, transform.position, Quaternion.LookRotation(new Vector3(0,-1,0)), gameObject.transform);
     }
 
     //»∞º∫»≠ ¥‹∞Ë
     private void OnEnable()
     {
+        speeduptime = 1;
         life_coroutine = StartCoroutine(BulletReturn());
     }
 
@@ -43,7 +47,8 @@ public class Buller_4_2 : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.up * speed * Time.deltaTime;
+        speeduptime += (Time.deltaTime * 20);
+        transform.position += transform.up * speeduptime * Time.deltaTime;
     }
 
     IEnumerator BulletReturn()

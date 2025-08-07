@@ -6,6 +6,12 @@ public class Fire_4_1 : MonoBehaviour
 {
     //ÃÑ¾Ë ¹ß»ç¸¦ À§ÇÑ Ç®
     public BulletPool_4 pool;
+    public GameObject effect_prefab; // ÀÌÆåÆ® ÇÁ¸®Æé
+
+    float Delay;
+
+    public float starttime;
+    float time;
 
     //ÃÑ¾Ë¹ß»çÁöÁ¡
     public Transform pos;
@@ -13,17 +19,29 @@ public class Fire_4_1 : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        time = starttime;
+        Delay = 0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+       
+
+        if (Input.GetKey(KeyCode.Z))
         {
-            var bullet = pool.GetBullet();
-            bullet.transform.position = pos.position;
-            bullet.transform.rotation = pos.rotation;
+            time += Time.deltaTime;
+
+            if (time > Delay)
+            {
+                //Instantiate(effect_prefab, transform.position, Quaternion.identity);
+
+                var bullet = pool.GetBullet();
+                bullet.transform.position = pos.position;
+                bullet.transform.rotation = pos.rotation;
+
+                time = 0;
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ public class BulletPool_4 : MonoBehaviour
 {
     public int score = 0;
     public GameObject bullet_prefab;
-    public int size = 30;
+    public int size = 100;
 
     //풀로 자주 사용되는 자료구조
     // 1. 리스트(List) : 데이터를 순차적으로 저장하고 추가 삭제가 자유롭기 때문에 효과적

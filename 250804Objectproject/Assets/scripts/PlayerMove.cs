@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
 
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGounded())
+        if (Input.GetKeyDown(KeyCode.X) && IsGounded())
         {
             rb.AddForce(Vector3.up * jp, ForceMode.Impulse);
             //ForceMode.Impulse : 순간적인 힘
