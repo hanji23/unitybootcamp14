@@ -22,7 +22,7 @@ public class MenuUI : MonoBehaviour
     private void GameExit()
     {
 #if UNITY_EDITOR
-        EditorApplication.Exit(0); //에디터 환경 (Exit는 에디터를 완전 종료함)
+        EditorApplication.isPlaying = false; //에디터 환경 ( EditorApplication.Exit(0)는 에디터를 완전 종료함)
 #else
         Application.Quit(); //게임 환경
 #endif

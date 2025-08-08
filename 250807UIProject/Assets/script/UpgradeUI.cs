@@ -25,12 +25,17 @@ public class UpgradeUI : MonoBehaviour
         "최대 강화 완료"
     };
 
+    private string[] useitem = new string[]
+    {
+        "루비",
+        "사파이어",
+        "마력석"
+    };
+
     public int usegold = 0;
     public int useruby = 0;
     public int usesapa = 0;
     public int usempstone = 0;
-
-    public int count = 0;
 
     //private int upgrade = 0;
 
@@ -67,32 +72,40 @@ public class UpgradeUI : MonoBehaviour
              usesapa = 0;
              usempstone = 0;
 
-             count = 0;
-
             item_table = materials[playerstat.upgrade].Split(" + ");
 
+            string[] item_table2;
+            item_table2 = materials[playerstat.upgrade].Split(" ");
+            
+            foreach (string item in item_table2)
+            {
+                if (item == item_table2[1])
+                {
+                    usegold = int.Parse(item_table2[0]);
+                }
+            }
             foreach (string item in item_table)
             {
-                Debug.Log(item);
-
-                switch (count)
+                //Debug.Log(item);
+                for (int i = 0; i < item_table.Length; i++)
                 {
-                    case 0:
-                        string[] item_table2;
-                        item_table2 = materials[playerstat.upgrade].Split(" 골드");
-                        usegold = int.Parse(item_table2[0]);
-                        break;
-                    case 1:
-                        useruby = 1;
-                        break;
-                    case 2:
-                        usesapa = 1;
-                        break;
-                    case 3:
-                        usempstone = 1;
-                        break;
+                    Debug.Log(item + " " + i + " " + item_table[i]);
+                    if (item == useitem[i])
+                    {
+                        switch (item)
+                        {
+                            case "루비":
+                                useruby = 1;
+                                break;
+                            case "사파이어":
+                                usesapa = 1;
+                                break;
+                            case "마력석":
+                                usempstone = 1;
+                                break;
+                        }
+                    }
                 }
-                count++;
             }
            
             if (playerinven.gold - usegold < 0 || playerinven.ruby - useruby < 0 || playerinven.sapa - usesapa < 0 || playerinven.mpstone - usempstone < 0 )
