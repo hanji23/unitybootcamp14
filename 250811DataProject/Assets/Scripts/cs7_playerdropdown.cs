@@ -1,10 +1,7 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
-using static cs4_JsonMaker;
 
 public class cs7_playerdropdown : MonoBehaviour
 {
@@ -12,7 +9,7 @@ public class cs7_playerdropdown : MonoBehaviour
     public Text t1, t2, t3, t4;
     charaterList list;
 
-    private List<string> options = new List<string> { "A", "B", "C", "D" };
+    private List<string> options = new List<string> { "¾ê´ÂA", "À÷´ÂB", "°Â´ÂC", "¹ä" };
 
     public class charaterData
     {

@@ -1,16 +1,21 @@
 using System;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class cs6_pmtest1 : MonoBehaviour
 {
-    string path1;
-    string path2;
-    string path3;
+    string path1 = null;
+    string path2 = null;
+    string path3 = null;
 
     public Dropdown dropdown;
     public Text t1, t2, t3, t4;
+    public Text t5, t6;
+
+    int i;
+    public cs10_so so;
 
     [Serializable]
     public class PlayerData
@@ -20,6 +25,7 @@ public class cs6_pmtest1 : MonoBehaviour
         public int hp;
         public int atk;
         public int def;
+
     }
 
     [Serializable]
@@ -28,29 +34,38 @@ public class cs6_pmtest1 : MonoBehaviour
         public PlayerData[] players;
     }
 
+    public static cs6_pmtest1 Instance { get; private set; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        playerload();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
     public void playerload()
     {
-        if (File.Exists(path1))
+        string path1 = Path.Combine(Application.persistentDataPath, "player1.json");
+        string path2 = Path.Combine(Application.persistentDataPath, "player2.json");
+        string path3 = Path.Combine(Application.persistentDataPath, "player3.json");
+
+        if (File.Exists(path1) || File.Exists(path2) || File.Exists(path3))
         {
-            //파일 텍스트를 전부 읽어서 문자형 데이터로 변경합니다.
-            string json2 = File.ReadAllText(path1);
-
-            PlayerList loaded = JsonUtility.FromJson<PlayerList>(json2);
-
+            t5.gameObject.SetActive(true);
+            t6.gameObject.SetActive(true);
         }
+        else
+        {
+            t5.gameObject.SetActive(false);
+            t6.gameObject.SetActive(false);
+        }
+
     }
 
     public void playerCreate()
@@ -70,8 +85,17 @@ public class cs6_pmtest1 : MonoBehaviour
         };
 
         string json = JsonUtility.ToJson(list, true);
-        string path = Path.Combine(Application.persistentDataPath, "player1.json");
+        string path = Path.Combine(Application.persistentDataPath, $"player{i}.json");
+
         File.WriteAllText(path, json);
-        Debug.Log("플레이어 생성!");
+        Debug.Log($"플레이어 생성!\n{path}");
+        so.i = i;
+
+        SceneManager.LoadScene("NextScene");
+    }
+
+    public void seli(int i)
+    {
+        this.i = i;
     }
 }
