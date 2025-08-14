@@ -1,8 +1,8 @@
 # unitybootcamp14
 unitybootcamp14 project
 
-## 인터페이스(interface) ### C# - 560p~
-
+## 인터페이스(interface) 
+### C# - 560p~
 인터페이스는 클래스 또는 구조체에 포함될수 있는 관련 있는 메소드들을 묶어서 관리하는것을 말합니다
 
 ### 작성순서
