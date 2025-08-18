@@ -1,0 +1,55 @@
+유니티 빌드 파일 
+
+Scene List를 통해서 현재 열려있는 씬의 목록을 설정 할수 있습니다.
+
+플랫폼 설정을 진행할수 있습니다.
+
+플랫폼에 대한 설치 작업은 필요합니다 (유니티 허브에서 Install)
+
+Player Settings을 통해 해상도 아이콘, 로고, 스플래시 이미지, 
+회사명, 버전명 등 게임 프로젝트에 필요한 설정들을 진행 할 수 있습니다.
+
+Add Build Profile을 통해 플랫폼 별
+빌드의 구성을 저장, 관리 할수 있습니다.
+
+추가한 프로파일에서 설정할수 있는 값
+Override Global Scene List
+해당 기능을 체크할 경우 현재의 빌드 프로파일에서 자체적으로 빌드할 씬 목록만 등록 할수 있습니다.
+이 기능으로 할만한 작업?
+ > 데모버전 빌드(완성된 씬중에서 메인만 포함 시키고, 다른씬 제외)
+ > 특정 기능 테스트를 위한 빌드
+ > 서로 다른 시작 씬을 가지는 상황에 대한 빌드도 가능
+
+Scripting Defines
+C# 코드에서의 전처리기 정의를 설정합니다
+
+1) Player Settings 에서 설정하는 방법
+Edit -> Project Settings -> player -> Other Settings -> Script Compliation에 리스트로 등록
+유니티 프로젝트 전체에서 쓸 수 있는 심볼이 정의됩니다.
+
+2) Build Profiles의 Add Build Profile로 전용 빌드를 하나 만들어주고 Scripting Defines에 리스트로 등록할 경우 해당 환경에서만 심볼이 정의되게 됩니다
+
+심볼 정의할 때 일반적으로 영대문자로 작성해주는 편 ex)UNITY_ANDROID_7
+
+C# preprocessor(전처리기)
+컴파일에 코드의 일부를 조건적으로 포함 시키거나 제외시키는 용도로 사용되는 먼저 처리 기능들을 의미합니다.
+# + 영단어로 구성되어있음 (ex)#region
+
+대표적으로 사용되는 C# 전처리기 코드
+#define					심볼에 대한 정의  - 심볼(Symbol) : 조건부 컴파일을 위해 쓰는 유니티의 태그 같은 기능
+						ex) #define BUG_FIX
+						유니티에서는 Player Settings에서 설정을 진행하거나 유니티 6 이상 버전에서는 Build Profile의 Scripting Defines에 작성합니다.
+
+#undef					심볼에 대한 제거
+
+유니티에서는 #define, #undef는 사용하지 않는 것이 일반적
+
+#if 심볼명				심볼이 정의 되어 있을 경우 해당 위치의 코드 활성화
+#else					정의가 안된 경우 해당 위치의 코드 활성화
+#elif					다른 조건 확인
+#endif					#if의 마지막으로 반드시 작성해야하며, 사용이 마무리 됨을 안내함
+
+#region, #endregion		스크립트 코드에 대한 접기 영역을 만들어 줍니다
+
+#warning				조건에 따라 컴파일 경고를 발생
+#error					조건에 따라 컴파일 에러를 발생
