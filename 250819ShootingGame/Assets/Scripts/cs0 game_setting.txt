@@ -1,0 +1,22 @@
+씬뷰 ->iso
+
+씬 기즈모 -> back
+
+ y
+ㅁ x
+
+카메라 projection
+Orthographic
+
+y = 0
+
+size = 5
+
+Directional Light 삭제 또는 Light 컴포넌트 비활성화
+
+window -> Rendering -> Light -> Environment
+
+Environment Light -> Sourec -> color(sky box 대신)
+Ambient Color(주변광) -> 흰색 설정
+
+게임뷰 640 x 960

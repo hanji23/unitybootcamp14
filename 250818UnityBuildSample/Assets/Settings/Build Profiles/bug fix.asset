@@ -30,6 +30,8 @@ MonoBehaviour:
     m_path: Assets/Scenes/game2Scene.unity
   - m_enabled: 1
     m_path: Assets/Scenes/game3Scene.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/endScene.unity
   m_ScriptingDefines:
   - CUSTOM_DEBUG_MODE
   - CUSTOM_RELEASE_MODE
